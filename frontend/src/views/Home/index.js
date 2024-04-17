@@ -44,7 +44,7 @@ const HomePage = () => {
   const [cssClass, setCssClass] = useState("decolor-error");
   const [showProgressBar, setShowProgressBar] = useState(false);
   const hostLocal = "http://localhost:5000";
-  const hostRemote = "http://35.193.133.90:5000";
+  const hostRemote = ""; //paste remote url of backend here
   let local = false;
   let host = "";
   if (local) {

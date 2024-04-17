@@ -52,11 +52,9 @@ app.post("/uploadVideo", upload.single("file"), async (req, res) => {
 
     console.log("file found");
     const fileName = req.file.originalname;
-    //console.log(fileName+"@@@@@@@@@@@@@@@@@@")
     const file = storage.bucket(uploadBucket).file(fileName);
     listFiles().catch(console.error);
 
-    // console.log(t_url_of_the_uploaded_file);
     const stream = file.createWriteStream({
       metadata: {
         contentType: req.file.mimetype,
@@ -95,7 +93,6 @@ app.post("/uploadImage", upload.single("image"), async (req, res) => {
     console.log(imageName);
     const file = storage.bucket(thumbnailsBucket).file(imageName);
 
-    // console.log(t_url_of_the_uploaded_file);
     const stream = file.createWriteStream({
       metadata: {
         contentType: req.file.mimetype,
@@ -129,13 +126,6 @@ app.post("/downloadAndUploadVideo", async (req, res) => {
     console.log(videoDuration);
     res.send({ message: "Video link received successfully.", videoDuration });
   }
-
-  // downloadAndUploadVideo(videoLink)
-  //   .then(() => console.log("Upload successful"))
-  //   .catch(console.error);
-  // Here you can add logic to download and upload the video
-
-  // Send a response back to the client
 });
 
 async function downloadAndUploadVideo(youtubeURL) {
